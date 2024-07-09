@@ -1,5 +1,6 @@
 package com.product.prod.pojo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,8 +13,14 @@ public class Prodotto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(length = 50,
+    nullable = false,
+    unique = true)
     private String name;
+
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String description;
+
     private double price;
     private int rebate; // sconto percentuale
     private int quantity;

@@ -1,5 +1,6 @@
 package com.product.prod.pojo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +13,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(columnDefinition = "TINYINT", nullable = false)
     private int rating;
+
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String comment;
 
     public Review () {
@@ -40,7 +44,7 @@ public class Review {
 
     @Override
     public String toString() {
-        return "\nReview: "
+        return "Review: "
         + "rating: " + getRating()
         + " comment: " +getComment();
         

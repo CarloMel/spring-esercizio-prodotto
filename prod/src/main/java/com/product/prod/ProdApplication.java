@@ -51,6 +51,28 @@ public class ProdApplication implements CommandLineRunner {
 
 		System.out.println("=========================================================================");
 
+		System.out.println("Find all");
+		System.out.println(reviewService.findAll());
+
+		System.out.println("Find by ID");
+
+		// System.out.println(reviewService.findById(3));
+		Optional<Review> opReview = reviewService.findById(3);
+
+		if (opReview.isEmpty()) {
+			System.out.println("Review is not present");
+		} else {
+			Review foundReview = opReview.get();
+			System.out.println(foundReview);
+		}
+
+
+		
+
+		System.out.println("Delete first and last");
+		reviewService.delete(r1);
+		reviewService.delete(r3);
+
 		System.out.println(reviewService.findAll());
 
 		System.out.println("The end");
