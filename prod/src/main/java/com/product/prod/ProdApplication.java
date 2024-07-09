@@ -41,13 +41,15 @@ public class ProdApplication implements CommandLineRunner {
 		prodottoService.save(p5);
 		System.out.println("=========================================================================");
 
-		Review r1 = new Review(5, "Perfect!");
-		Review r2 = new Review(1, "Horrible");
-		Review r3 = new Review(3, "Mid");
+		Review r1 = new Review(5, "Perfect!", p1);
+		Review r2 = new Review(1, "Horrible", p2);
+		Review r3 = new Review(3, "Mid", p3);
+		Review r4 = new Review(4, "Not bad", p3);
 
 		reviewService.save(r1);
 		reviewService.save(r2);
 		reviewService.save(r3);
+		reviewService.save(r4);
 
 		System.out.println("=========================================================================");
 
@@ -74,6 +76,10 @@ public class ProdApplication implements CommandLineRunner {
 		reviewService.delete(r3);
 
 		System.out.println(reviewService.findAll());
+
+		System.out.println("Adding everything again");
+		reviewService.save(r1);
+		reviewService.save(r3);
 
 		System.out.println("The end");
 	}

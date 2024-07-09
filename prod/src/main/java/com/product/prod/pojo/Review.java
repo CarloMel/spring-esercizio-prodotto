@@ -5,8 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "recensione")
 public class Review {
 
     @Id
@@ -19,11 +23,15 @@ public class Review {
     @Column(columnDefinition = "TEXT", nullable = true)
     private String comment;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Prodotto prodotto;
+
     public Review () {
         
     }
 
-    public Review (int rating, String comment) {
+    public Review (int rating, String comment, Prodotto prodotto) {
         
         setRating(rating);
         setComment(comment);
